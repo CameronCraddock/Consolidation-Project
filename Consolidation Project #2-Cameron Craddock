@@ -1,12 +1,13 @@
 #Cameron Craddock Consolidation Project #2
 import random
 
-def choose_word(weapon_foundry_bank):
-    return random.choice(weapon_foundry_bank)
+def choose_word(weaponfoundry_bank):
+    return random.choice(weaponfoundry_bank)
 
 def display_status(letters_guessed, word_length):
     print(f"Word length: {word_length}")
     print("Guessed letters:", ' '.join(sorted(letters_guessed)))
+
 
 def guess_letter(word, letters_guessed):
     letter = input("Guess a letter: ").lower()
@@ -17,27 +18,28 @@ def guess_letter(word, letters_guessed):
     return word.count(letter)
 
 def main():
-    weapon_foundry_bank = ["hakke", "omolon", "tex mechanica"]  #weapon foundry word bank
-    secret_word = choose_word(weapon_foundry_bank)
+    weaponfoundry_bank = ["hakke", "omolon", "tex mechanica"]  # Example word bank
+    secret_word = choose_word(weaponfoundry_bank)
     word_length = len(secret_word)
     letters_guessed = set()
     turn_count = 0
     word_guesses = 0
 
+    
     while word_guesses < 3:
         display_status(letters_guessed, word_length)
         occurrences = guess_letter(secret_word, letters_guessed)
         turn_count += 1
         print(f"The letter appears {occurrences} times.")
 
-        if input("Do you want to guess the whole weapon foundry? (yes/no) ").lower() == 'yes':
-            word_guess = input("Enter your word guess: ")
+        if input("Do you want to guess the weapon foundry? (yes/no) ").lower() == 'yes':
+            word_guess = input("Enter your weapon foundry guess: ")
             word_guesses += 1
             if word_guess == secret_word:
                 print(f"Congratulations! You guessed the weapon foundry in {turn_count} guesses!")
                 break
             else:
-                print("Wrong guess!")
+                print("Wrong weapon foundry!")
                 if word_guesses == 3:
                     print("Game Over. You've used all your weapon foundry guesses.")
                     break
@@ -47,3 +49,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+   
